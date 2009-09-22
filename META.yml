@@ -1,14 +1,23 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         WWW-Scraper-ISBN-LibUniverIt_Driver
-version:      0.11
-version_from: lib/WWW/Scraper/ISBN/LibUniverIt.pm
-installdirs:  site
+--- #YAML:1.0
+name:               WWW-Scraper-ISBN-LibUniverIt_Driver
+version:            0.12
+abstract:           ~
+author:
+    - Marco Ghezzi <marcog@gmail.com>
+license:            unknown
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
 requires:
-    HTML::Entities:                1.32
-    LWP::UserAgent:                2
-    WWW::Scraper::ISBN:            0.25
-    WWW::Scraper::ISBN::Driver:    0.15
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30
+    HTML::Entities:       1.32
+    LWP::UserAgent:       2
+    WWW::Scraper::ISBN:   0.25
+    WWW::Scraper::ISBN::Driver:  0.15
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.48
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

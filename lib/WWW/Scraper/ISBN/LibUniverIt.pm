@@ -1,4 +1,4 @@
-package WWW::Scraper::ISBN::LibUniverIt::Driver;
+package WWW::Scraper::ISBN::LibUniverIt_Driver;
 use strict;
 use warnings;
 use LWP::UserAgent;
@@ -7,7 +7,7 @@ use HTML::Entities qw(decode_entities);
 
 our @ISA = qw(WWW::Scraper::ISBN::Driver);
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
                 
 sub search {
         my $self = shift;
@@ -44,12 +44,14 @@ sub search {
 			    $date = $2;
 			}
 		}
+		
+		##<span class="product_label">Editore:</span> <span class="product_text"><a href="libri-editore_Einaudi-einaudi.htm" title="Einaudi" >Einaudi</a></span>
 		$price = $1 if ($doc =~ /Prezzo: .*?&euro;&nbsp;(\d+)/);
 	} elsif ($doc =~ /Dettagli del libro/){
 		$price = $1 if ($doc =~ m|<span class="product_price">&euro;&nbsp;([^<]+)</span>|);
 		$title = $1 if ($doc =~ m|<span class="product_label">Titolo:</span> <span class="product_text">([^>]+)</span>|);
 		$authors = parse_authors($1) if ($doc =~ m|<span class="product_label">Autor[ei]:</span>(.*?)<li>|);
-	    $editor = $1 if ($doc =~ m|<span class="product_label">Editore:</span>.*?<a href="libri-editore[^"]+"[^>]+/>([^<]+)</a></span><li>|);
+	    $editor = $1 if ($doc =~ m|<span class="product_label">Editore:</span>\s+<span class="product_text"><a href="libri-editore[^>]+>([^<]+)</a>|);
 		$date = $1 if ($doc =~ m|<span class="product_label">Data di Pubblicazione:</span>\s+<span class="product_text">(\d+)</span><li>|);
 		$pages = $1 if ($doc =~ m|<span class="product_label">Pagine:</span>\s+<span class="product_text">(\d+)</span><li>|);
         $series = $1 if ($doc =~ m|<span class="product_label">Collana:</span>\s+<span class="product_text"><a href="libri-collana[^>]+>([^<]+)</a>|);

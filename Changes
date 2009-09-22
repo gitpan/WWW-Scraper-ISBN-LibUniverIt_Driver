@@ -4,4 +4,6 @@ Revision history for WWW-Scraper-ISBN-LibUniverIt
         First version, released on an unsuspecting world.
 0.11    Date/time
         fix docs and test and install layout.
+0.12    Date/time
+        fix publisher regex.
 
