@@ -6,4 +6,6 @@ Revision history for WWW-Scraper-ISBN-LibUniverIt
         fix docs and test and install layout.
 0.12    Date/time
         fix publisher regex.
+0.13	Date/Time
+		fix regex to match new page layout
 
